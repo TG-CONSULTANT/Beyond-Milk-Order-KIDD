@@ -284,54 +284,58 @@
       padding:2px 8px; border-radius:999px; letter-spacing:.5px;
     }
 
-    /* horizontal scroll strip */
+    /* promo strip — vertical stack, full width */
     .promo-strip{
-      display:flex; gap:12px;
-      overflow-x:auto; padding-bottom:8px;
-      scroll-snap-type:x mandatory;
-      -webkit-overflow-scrolling:touch;
+      display:flex; flex-direction:column; gap:10px; padding-bottom:4px;
     }
-    .promo-strip::-webkit-scrollbar{ height:4px; }
-    .promo-strip::-webkit-scrollbar-track{ background:transparent; }
-    .promo-strip::-webkit-scrollbar-thumb{ background:var(--goldborder); border-radius:4px; }
 
+    /* ── full-width horizontal card ── */
     .promo-card{
-      flex-shrink:0; scroll-snap-align:start;
-      background:linear-gradient(145deg,#fffbeb 0%,#fef3c7 100%);
+      display:flex; align-items:stretch;
+      background:linear-gradient(135deg,#fffbeb 0%,#fef3c7 100%);
       border:2px solid var(--goldborder);
-      border-radius:18px; width:220px;
-      padding:14px 14px 10px;
+      border-radius:18px;
       box-shadow:0 3px 14px rgba(245,158,11,.18);
-      position:relative; overflow:hidden;
+      overflow:hidden; position:relative;
     }
     .promo-card::before{
-      content:''; position:absolute; top:-18px; right:-18px;
-      width:70px; height:70px;
-      background:radial-gradient(circle,rgba(245,158,11,.18) 0%,transparent 70%);
-      border-radius:50%;
+      content:''; position:absolute; top:-20px; right:-20px;
+      width:90px; height:90px;
+      background:radial-gradient(circle,rgba(245,158,11,.15) 0%,transparent 70%);
+      border-radius:50%; pointer-events:none;
     }
+
+    /* รูปชิดซ้าย เต็มสูง */
     .promo-card-img{
-      width:52px; height:52px; border-radius:11px; object-fit:cover;
-      border:2px solid var(--goldborder); margin-bottom:8px;
+      width:100px; height:100px; object-fit:cover;
+      flex-shrink:0; border-right:2px solid var(--goldborder);
+      border-radius:0;
     }
     .promo-card-img-placeholder{
-      width:52px; height:52px; border-radius:11px;
+      width:100px; height:100px; flex-shrink:0;
       background:linear-gradient(135deg,#fde68a,#fcd34d);
-      border:2px solid var(--goldborder);
+      border-right:2px solid var(--goldborder);
       display:flex; align-items:center; justify-content:center;
-      font-size:24px; margin-bottom:8px;
+      font-size:32px;
+    }
+
+    /* ข้อมูล + ปุ่ม ด้านขวา */
+    .promo-card-body{
+      flex:1; min-width:0;
+      display:flex; flex-direction:column; justify-content:center;
+      padding:10px 12px; gap:2px;
     }
     .promo-name{
       font-size:var(--fs-sm); font-weight:700; color:var(--gold3); line-height:1.3;
-      margin-bottom:2px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+      margin-bottom:0; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
     }
-    .promo-sku{ font-size:var(--fs-xs); color:#b45309; margin-bottom:4px; }
-    .promo-price{ font-size:var(--fs-base); font-weight:900; color:var(--gold2); margin-bottom:10px; }
+    .promo-sku{ font-size:var(--fs-xs); color:#b45309; }
+    .promo-price{ font-size:var(--fs-base); font-weight:900; color:var(--gold2); margin:4px 0 8px; }
 
     .promo-qty-row{
-      display:flex; align-items:center; justify-content:space-between;
-      background:rgba(255,255,255,.7); border-radius:10px;
-      padding:5px 8px; gap:6px;
+      display:flex; align-items:center;
+      background:rgba(255,255,255,.75); border-radius:10px;
+      padding:4px 8px; gap:6px; align-self:flex-start;
     }
     .promo-qty-btn{
       width:30px; height:30px;
@@ -348,7 +352,7 @@
     }
     .promo-line-total{
       font-size:var(--fs-xs); font-weight:700; color:var(--gold2);
-      text-align:right; min-width:60px;
+      margin-left:4px;
     }
     .promo-line-zero{ color:#b45309; opacity:.5; font-weight:400; }
   </style>
@@ -532,14 +536,16 @@
       return `
       <div class="promo-card">
         ${imgH}
-        <div class="promo-name" title="${esc(p.name)}">${esc(p.name)}</div>
-        ${p.sku?`<div class="promo-sku">#${esc(p.sku)}</div>`:""}
-        <div class="promo-price">${money(p.price)}</div>
-        <div class="promo-qty-row">
-          <button class="promo-qty-btn" onclick="promoChg('${escJs(k)}',-1)">−</button>
-          <span class="promo-qty-num" id="pq${pi}">${qty}</span>
-          <button class="promo-qty-btn" onclick="promoChg('${escJs(k)}',1)">+</button>
-          <span class="promo-line-total ${qty===0?'promo-line-zero':''}" id="pl${pi}">${qty===0?"—":money(line)}</span>
+        <div class="promo-card-body">
+          <div class="promo-name" title="${esc(p.name)}">${esc(p.name)}</div>
+          ${p.sku?`<div class="promo-sku">#${esc(p.sku)}</div>`:""}
+          <div class="promo-price">${money(p.price)}</div>
+          <div class="promo-qty-row">
+            <button class="promo-qty-btn" onclick="promoChg('${escJs(k)}',-1)">−</button>
+            <span class="promo-qty-num" id="pq${pi}">${qty}</span>
+            <button class="promo-qty-btn" onclick="promoChg('${escJs(k)}',1)">+</button>
+            <span class="promo-line-total ${qty===0?'promo-line-zero':''}" id="pl${pi}">${qty===0?"—":money(line)}</span>
+          </div>
         </div>
       </div>`;
     }).join("");
