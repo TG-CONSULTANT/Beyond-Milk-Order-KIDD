@@ -11,6 +11,8 @@
       --blue:#1a7fd4; --blue2:#155fa0; --blue3:#0d3f6e;
       --white:#ffffff; --soft:#f0f7fd; --border:#b8d9f0; --muted:#6b92b0;
       --red:#dc2626;
+      --gold:#f59e0b; --gold2:#d97706; --gold3:#92400e;
+      --goldbg:#fffbeb; --goldborder:#fde68a;
       --shadow:0 4px 24px rgba(26,127,212,.13);
       --fs-base:18px; --fs-sm:15px; --fs-xs:13px; --fs-xl:24px;
     }
@@ -32,10 +34,7 @@
       background:radial-gradient(ellipse at 20% 120%,rgba(255,255,255,.08) 0%,transparent 60%),
                  radial-gradient(ellipse at 80% -20%,rgba(255,255,255,.06) 0%,transparent 50%);
     }
-    /* ── แถวโลโก้ + ข้อความ ── */
-    .header-inner{
-      display:flex; align-items:center; gap:16px; position:relative;
-    }
+    .header-inner{ display:flex; align-items:center; gap:16px; position:relative; }
     .header-logo{
       width:72px; height:72px; border-radius:18px; object-fit:cover;
       border:3px solid rgba(255,255,255,.35); box-shadow:0 4px 16px rgba(0,0,0,.2);
@@ -67,10 +66,7 @@
     }
     .product-row:last-child{ border-bottom:none; }
     .product-top{ display:flex; align-items:center; gap:12px; }
-    .pimg{
-      width:58px; height:58px; border-radius:12px; object-fit:cover;
-      border:2px solid var(--border); background:var(--sky); flex-shrink:0;
-    }
+    .pimg{ width:58px; height:58px; border-radius:12px; object-fit:cover; border:2px solid var(--border); background:var(--sky); flex-shrink:0; }
     .pimg-placeholder{
       width:58px; height:58px; border-radius:12px; flex-shrink:0;
       background:linear-gradient(135deg,var(--sky),var(--sky2));
@@ -82,7 +78,7 @@
     .psku{ font-size:var(--fs-xs); color:var(--muted); margin-bottom:3px; }
     .pprice{ font-size:var(--fs-sm); font-weight:700; color:var(--blue); }
 
-    /* QTY + LINE */
+    /* QTY */
     .product-bottom{ display:flex; align-items:center; justify-content:space-between; gap:8px; }
     .qty-wrap{ display:flex; align-items:center; flex-shrink:0; }
     .qty-btn{
@@ -150,50 +146,32 @@
     .btn-ghost{ background:var(--sky); color:var(--blue2); border:2px solid var(--border); }
     .btn-danger{ background:#fef2f2; color:var(--red); border:2px solid #fecaca; }
 
-    /* CATEGORY SCREEN */
+    /* SCREENS */
     #category-screen { display:block; padding:0 14px; }
-    #product-screen  { display:none; padding:0 14px; }
+    #product-screen  { display:none;  padding:0 14px; }
 
+    /* CAT GRID */
     .cat-grid {
       display:grid;
       grid-template-columns:repeat(auto-fill, minmax(140px, 1fr));
-      gap:16px;
-      padding:16px 0;
+      gap:16px; padding:8px 0 16px;
     }
     .cat-card {
-      background:#fff;
-      border:2px solid #e5e7eb;
-      border-radius:16px;
-      padding:24px 12px;
-      text-align:center;
-      cursor:pointer;
-      font-weight:600;
-      font-size:1rem;
-      transition:all .2s;
+      background:#fff; border:2px solid #e5e7eb; border-radius:16px;
+      padding:20px 12px; text-align:center; cursor:pointer;
+      font-weight:600; font-size:1rem; transition:all .2s;
       box-shadow:0 2px 6px rgba(0,0,0,.06);
     }
-    .cat-card:hover, .cat-card:active {
-      border-color:var(--blue);
-      background:var(--sky);
-      transform:translateY(-2px);
-    }
-    .cat-card .cat-icon { font-size:2rem; margin-bottom:8px; }
+    .cat-card:hover,.cat-card:active{ border-color:var(--blue); background:var(--sky); transform:translateY(-2px); }
+    .cat-card .cat-icon{ font-size:2rem; margin-bottom:8px; }
 
     .btn-back {
-      display:inline-flex;
-      align-items:center;
-      gap:6px;
-      background:none;
-      border:none;
-      color:var(--blue2);
-      font-size:0.95rem;
-      font-weight:600;
-      cursor:pointer;
-      padding:0;
-      margin-bottom:12px;
-      font-family:'Prompt',sans-serif;
+      display:inline-flex; align-items:center; gap:6px;
+      background:none; border:none; color:var(--blue2);
+      font-size:0.95rem; font-weight:600; cursor:pointer;
+      padding:0; margin-bottom:12px; font-family:'Prompt',sans-serif;
     }
-    .btn-back:hover { text-decoration:underline; }
+    .btn-back:hover{ text-decoration:underline; }
 
     /* TOAST */
     .toast{
@@ -206,16 +184,12 @@
 
     .loading{ opacity:.65; pointer-events:none; }
     .spacer{ height:24px; }
-    .skeleton{
-      background:linear-gradient(90deg,var(--sky) 25%,var(--sky2) 50%,var(--sky) 75%);
-      background-size:200% 100%; animation:shimmer 1.5s infinite; border-radius:9px;
-    }
+    .skeleton{ background:linear-gradient(90deg,var(--sky) 25%,var(--sky2) 50%,var(--sky) 75%); background-size:200% 100%; animation:shimmer 1.5s infinite; border-radius:9px; }
     @keyframes shimmer{ 0%{background-position:200% 0} 100%{background-position:-200% 0} }
-    .skel-row{ display:flex; align-items:center; gap:12px; padding:13px 16px; border-bottom:1px solid var(--sky2); }
     .wave{ width:100%; height:26px; margin-top:-1px; }
     .header-wave{ display:block; fill:#e8f4fd; }
 
-    /* ── CART BADGE (floating button) ── */
+    /* CART BADGE */
     .cart-badge{
       position:fixed; bottom:20px; right:18px; z-index:99;
       background:var(--blue2); color:#fff;
@@ -223,13 +197,12 @@
       font-size:var(--fs-sm); font-weight:700;
       box-shadow:0 4px 18px rgba(26,127,212,.35);
       display:none; align-items:center; gap:8px;
-      cursor:pointer;
-      transition:transform .12s;
+      cursor:pointer; transition:transform .12s;
     }
     .cart-badge:active{ transform:scale(.96); }
     .cart-badge.visible{ display:flex; }
 
-    /* ── CART MODAL ── */
+    /* CART MODAL */
     .modal-overlay{
       display:none; position:fixed; inset:0; z-index:200;
       background:rgba(13,63,110,.45); backdrop-filter:blur(3px);
@@ -243,18 +216,11 @@
       box-shadow:0 -8px 40px rgba(13,63,110,.18);
       animation:slideUp .25s ease;
     }
-    @keyframes slideUp{
-      from{ transform:translateY(100%); opacity:0; }
-      to  { transform:translateY(0);    opacity:1; }
-    }
-    .modal-handle{
-      width:40px; height:4px; border-radius:999px; background:#d1d5db;
-      margin:12px auto 0;
-    }
+    @keyframes slideUp{ from{transform:translateY(100%);opacity:0} to{transform:translateY(0);opacity:1} }
+    .modal-handle{ width:40px; height:4px; border-radius:999px; background:#d1d5db; margin:12px auto 0; }
     .modal-header{
       display:flex; align-items:center; justify-content:space-between;
-      padding:14px 20px 10px;
-      border-bottom:1px solid var(--sky2);
+      padding:14px 20px 10px; border-bottom:1px solid var(--sky2);
     }
     .modal-title{ font-size:var(--fs-base); font-weight:700; color:var(--blue3); }
     .modal-close{
@@ -264,9 +230,7 @@
       color:var(--blue2); transition:background .12s;
     }
     .modal-close:active{ background:var(--blue); color:#fff; }
-    .modal-body{
-      overflow-y:auto; flex:1; padding:0;
-    }
+    .modal-body{ overflow-y:auto; flex:1; }
     .cart-item{
       display:flex; align-items:center; gap:12px;
       padding:12px 20px; border-bottom:1px solid var(--sky2);
@@ -282,7 +246,6 @@
     .cart-item-note{ font-size:var(--fs-xs); color:var(--blue); margin-top:2px; }
     .cart-item-right{ margin-left:auto; text-align:right; flex-shrink:0; display:flex; flex-direction:column; align-items:flex-end; gap:4px; }
     .cart-item-line{ font-size:var(--fs-sm); font-weight:700; color:var(--blue2); }
-    /* qty row inside cart modal */
     .cqty-wrap{ display:flex; align-items:center; }
     .cqty-btn{
       width:28px; height:28px; border:1.5px solid var(--border);
@@ -294,25 +257,100 @@
     .cqty-btn:active{ background:var(--blue); color:#fff; }
     .cqty-btn.del{ background:#fef2f2; color:var(--red); border-color:#fecaca; }
     .cqty-btn.del:active{ background:var(--red); color:#fff; }
-    .cqty-num{
-      min-width:28px; text-align:center;
-      font-size:var(--fs-sm); font-weight:700; color:var(--blue3);
-    }
-    .modal-footer{
-      padding:14px 20px;
-      border-top:1px solid var(--sky2);
-      background:var(--soft);
-    }
-    .modal-total-row{
-      display:flex; justify-content:space-between; align-items:center;
-    }
+    .cqty-num{ min-width:28px; text-align:center; font-size:var(--fs-sm); font-weight:700; color:var(--blue3); }
+    .modal-footer{ padding:14px 20px; border-top:1px solid var(--sky2); background:var(--soft); }
+    .modal-total-row{ display:flex; justify-content:space-between; align-items:center; }
     .modal-total-label{ font-size:var(--fs-sm); color:var(--muted); font-weight:600; }
     .modal-total-value{ font-size:var(--fs-xl); font-weight:900; color:var(--blue2); }
-    .cart-empty{
-      padding:40px 20px; text-align:center;
-      font-size:var(--fs-sm); color:var(--muted);
-    }
+    .cart-empty{ padding:40px 20px; text-align:center; font-size:var(--fs-sm); color:var(--muted); }
     .cart-empty-icon{ font-size:42px; margin-bottom:10px; }
+
+    /* ══════════════════════════════════════
+       PROMO SECTION
+    ══════════════════════════════════════ */
+    #promo-section{ display:none; margin-bottom:4px; }
+    #promo-section.has-promo{ display:block; }
+
+    .promo-header{
+      display:flex; align-items:center; gap:8px; margin:8px 0 8px;
+    }
+    .promo-header-title{
+      font-size:var(--fs-sm); font-weight:800; color:var(--gold2);
+      display:flex; align-items:center; gap:6px;
+    }
+    .promo-badge{
+      background:linear-gradient(135deg,var(--gold),var(--gold2));
+      color:#fff; font-size:10px; font-weight:700;
+      padding:2px 8px; border-radius:999px; letter-spacing:.5px;
+    }
+
+    /* horizontal scroll strip */
+    .promo-strip{
+      display:flex; gap:12px;
+      overflow-x:auto; padding-bottom:8px;
+      scroll-snap-type:x mandatory;
+      -webkit-overflow-scrolling:touch;
+    }
+    .promo-strip::-webkit-scrollbar{ height:4px; }
+    .promo-strip::-webkit-scrollbar-track{ background:transparent; }
+    .promo-strip::-webkit-scrollbar-thumb{ background:var(--goldborder); border-radius:4px; }
+
+    .promo-card{
+      flex-shrink:0; scroll-snap-align:start;
+      background:linear-gradient(145deg,#fffbeb 0%,#fef3c7 100%);
+      border:2px solid var(--goldborder);
+      border-radius:18px; width:220px;
+      padding:14px 14px 10px;
+      box-shadow:0 3px 14px rgba(245,158,11,.18);
+      position:relative; overflow:hidden;
+    }
+    .promo-card::before{
+      content:''; position:absolute; top:-18px; right:-18px;
+      width:70px; height:70px;
+      background:radial-gradient(circle,rgba(245,158,11,.18) 0%,transparent 70%);
+      border-radius:50%;
+    }
+    .promo-card-img{
+      width:52px; height:52px; border-radius:11px; object-fit:cover;
+      border:2px solid var(--goldborder); margin-bottom:8px;
+    }
+    .promo-card-img-placeholder{
+      width:52px; height:52px; border-radius:11px;
+      background:linear-gradient(135deg,#fde68a,#fcd34d);
+      border:2px solid var(--goldborder);
+      display:flex; align-items:center; justify-content:center;
+      font-size:24px; margin-bottom:8px;
+    }
+    .promo-name{
+      font-size:var(--fs-sm); font-weight:700; color:var(--gold3); line-height:1.3;
+      margin-bottom:2px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+    }
+    .promo-sku{ font-size:var(--fs-xs); color:#b45309; margin-bottom:4px; }
+    .promo-price{ font-size:var(--fs-base); font-weight:900; color:var(--gold2); margin-bottom:10px; }
+
+    .promo-qty-row{
+      display:flex; align-items:center; justify-content:space-between;
+      background:rgba(255,255,255,.7); border-radius:10px;
+      padding:5px 8px; gap:6px;
+    }
+    .promo-qty-btn{
+      width:30px; height:30px;
+      border:1.5px solid var(--goldborder);
+      background:#fff; color:var(--gold2);
+      font-size:18px; font-weight:700; border-radius:8px; cursor:pointer;
+      display:flex; align-items:center; justify-content:center;
+      transition:background .1s,transform .1s; line-height:1;
+    }
+    .promo-qty-btn:active{ background:var(--gold); color:#fff; transform:scale(.9); }
+    .promo-qty-num{
+      font-size:var(--fs-base); font-weight:700; color:var(--gold3);
+      min-width:24px; text-align:center;
+    }
+    .promo-line-total{
+      font-size:var(--fs-xs); font-weight:700; color:var(--gold2);
+      text-align:right; min-width:60px;
+    }
+    .promo-line-zero{ color:#b45309; opacity:.5; font-weight:400; }
   </style>
 </head>
 <body>
@@ -335,12 +373,24 @@
 
     <!-- ───── หน้าเลือกหมวดหมู่ ───── -->
     <div id="category-screen">
+
+      <!-- ★ PROMO SECTION ★ -->
+      <div id="promo-section">
+        <div class="promo-header">
+          <div class="promo-header-title">
+            🔥 โปรโมชั่นพิเศษ
+            <span class="promo-badge">HOT</span>
+          </div>
+        </div>
+        <div class="promo-strip" id="promoStrip"></div>
+      </div>
+
+      <!-- หมวดหมู่ปกติ -->
       <div style="display:flex;align-items:baseline;gap:8px;margin:2px 0 2px;">
         <h2 style="margin:0;font-size:var(--fs-base);">🛍️ เลือกหมวดหมู่</h2>
         <span style="color:#6b7280;font-size:var(--fs-xs);">กดหมวดหมู่เพื่อดูสินค้า</span>
       </div>
       <div id="cat-grid" class="cat-grid">
-        <!-- skeleton -->
         <div class="cat-card" style="animation:shimmer 1.5s infinite">
           <div class="cat-icon">⏳</div><div class="skeleton" style="height:14px;margin-top:4px;"></div>
         </div>
@@ -351,7 +401,6 @@
     <div id="product-screen">
       <button class="btn-back" onclick="showCategories()">← กลับเลือกหมวดหมู่</button>
       <h2 id="cat-title" style="margin-top:0;"></h2>
-
       <div class="card">
         <div class="card-header">
           <span class="card-icon">🍼</span>
@@ -361,7 +410,7 @@
       </div>
     </div>
 
-    <!-- ───── ยอดรวม (แสดงตลอดเวลา) ───── -->
+    <!-- ───── ยอดรวม ───── -->
     <div class="total-bar">
       <div>
         <div class="total-label">ยอดรวมทั้งหมด</div>
@@ -390,7 +439,7 @@
       </div>
       <div class="btn-row">
         <button class="btn btn-ghost" onclick="resetQty()">🔄 ล้างจำนวน</button>
-        <button class="btn btn-danger" onclick="resetAll()">🗑️ รีเซ็ต</button>
+        <button class="btn btn-danger"  onclick="resetAll()">🗑️ รีเซ็ต</button>
       </div>
       <div class="btn-row" style="padding-top:0">
         <button class="btn btn-primary" onclick="submitOrder()">✅ บันทึกออเดอร์</button>
@@ -401,12 +450,12 @@
     <div class="spacer"></div>
   </div>
 
-  <!-- floating cart button -->
+  <!-- floating cart -->
   <div class="cart-badge" id="cartBadge" onclick="openCartModal()">
     🛒 <span id="cartBadgeText">0 รายการ</span>
   </div>
 
-  <!-- ───── CART MODAL ───── -->
+  <!-- CART MODAL -->
   <div class="modal-overlay" id="cartModal" onclick="closeCartOnOverlay(event)">
     <div class="modal-box">
       <div class="modal-handle"></div>
@@ -425,58 +474,219 @@
   </div>
 
 <script>
-  // ============================================================
-  // 🔧 URL ของ Google Apps Script Web App
-  // ============================================================
   const GAS_URL = "https://script.google.com/macros/s/AKfycbzB6AAO3TcUZb9vV2IqHCq9UfO5ZhvO35JQ2242MijcMQmxiFK3AgiWE-KnP_29JPs5oA/exec";
-  // ============================================================
 
-  // ── state ──
-  let allProducts   = [];
-  let allCategories = [];
+  // ── ชื่อหมวดที่จะแสดงเป็น promo (ต้องตรงกับชื่อใน Google Sheet) ──
+  const PROMO_CATEGORY = "โปรโมชั่น";
+
+  let allProducts    = [];
+  let allCategories  = [];
+  let promoProducts  = [];
   let currentProducts = [];
   let qtyMap  = {};
   let noteMap = {};
 
-  // ── formatters ──
   const money = n => "฿" + Number(n||0).toLocaleString("th-TH",{minimumFractionDigits:2,maximumFractionDigits:2});
-  const esc   = s => String(s||"").replace(/[&<>"']/g, m =>
-    ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'})[m]);
+  const esc   = s => String(s||"").replace(/[&<>"']/g, m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'})[m]);
   const escJs = s => String(s||"").replace(/\\/g,"\\\\").replace(/'/g,"\\'");
   const keyOf = p => (p.sku&&p.sku.trim()) ? "SKU:"+p.sku.trim() : "NAME:"+p.name.trim();
 
-  // ── API helper ──
-  async function api(action, payload = null) {
-    const body = { action };
-    if (payload) body.payload = payload;
-    const res = await fetch(GAS_URL, {
-      method:  "POST",
-      headers: { "Content-Type": "text/plain" },
-      body:    JSON.stringify(body)
-    });
-    if (!res.ok) throw new Error("HTTP " + res.status);
+  async function api(action, payload=null){
+    const body={action}; if(payload) body.payload=payload;
+    const res=await fetch(GAS_URL,{method:"POST",headers:{"Content-Type":"text/plain"},body:JSON.stringify(body)});
+    if(!res.ok) throw new Error("HTTP "+res.status);
     return res.json();
   }
 
-  // ── Toast ──
-  function showToast(msg, ok=true){
-    const el = document.getElementById("toast");
-    el.className = "toast " + (ok ? "ok" : "err");
-    el.innerHTML = msg;
-    el.style.display = "block";
-    el.scrollIntoView({behavior:"smooth", block:"nearest"});
+  function showToast(msg,ok=true){
+    const el=document.getElementById("toast");
+    el.className="toast "+(ok?"ok":"err"); el.innerHTML=msg; el.style.display="block";
+    el.scrollIntoView({behavior:"smooth",block:"nearest"});
   }
-  function setLoading(v){
-    document.getElementById("app").classList.toggle("loading", !!v);
+  function setLoading(v){ document.getElementById("app").classList.toggle("loading",!!v); }
+
+  function updateCartBadge(){
+    let cnt=0;
+    allProducts.forEach(p=>{ cnt+=qtyMap[keyOf(p)]||0; });
+    document.getElementById("cartBadgeText").textContent=cnt+" รายการ";
+    document.getElementById("cartBadge").className="cart-badge"+(cnt>0?" visible":"");
   }
 
-  // ── Floating cart badge ──
-  function updateCartBadge(){
-    let cnt = 0;
-    allProducts.forEach(p => { cnt += qtyMap[keyOf(p)] || 0; });
-    const badge = document.getElementById("cartBadge");
-    document.getElementById("cartBadgeText").textContent = cnt + " รายการ";
-    badge.className = "cart-badge" + (cnt > 0 ? " visible" : "");
+  // ══════════════════════════════════════
+  //  PROMO SECTION
+  // ══════════════════════════════════════
+  function renderPromoSection(){
+    const strip = document.getElementById("promoStrip");
+    const sec   = document.getElementById("promo-section");
+    if(!promoProducts.length){ sec.classList.remove("has-promo"); return; }
+    sec.classList.add("has-promo");
+
+    strip.innerHTML = promoProducts.map((p,pi) => {
+      const k   = keyOf(p);
+      const qty = qtyMap[k] || 0;
+      const line= (Number(p.price)||0)*qty;
+      const imgH = p.image
+        ? `<img class="promo-card-img" src="${esc(p.image)}" loading="lazy"
+               onerror="this.outerHTML='<div class=promo-card-img-placeholder>&#x1F95B;</div>'">`
+        : `<div class="promo-card-img-placeholder">🥛</div>`;
+      return `
+      <div class="promo-card">
+        ${imgH}
+        <div class="promo-name" title="${esc(p.name)}">${esc(p.name)}</div>
+        ${p.sku?`<div class="promo-sku">#${esc(p.sku)}</div>`:""}
+        <div class="promo-price">${money(p.price)}</div>
+        <div class="promo-qty-row">
+          <button class="promo-qty-btn" onclick="promoChg('${escJs(k)}',-1)">−</button>
+          <span class="promo-qty-num" id="pq${pi}">${qty}</span>
+          <button class="promo-qty-btn" onclick="promoChg('${escJs(k)}',1)">+</button>
+          <span class="promo-line-total ${qty===0?'promo-line-zero':''}" id="pl${pi}">${qty===0?"—":money(line)}</span>
+        </div>
+      </div>`;
+    }).join("");
+  }
+
+  function syncPromoCard(key){
+    const pi=promoProducts.findIndex(p=>keyOf(p)===key);
+    if(pi<0) return;
+    const q=qtyMap[key]||0;
+    const line=(Number(promoProducts[pi].price)||0)*q;
+    const qEl=document.getElementById("pq"+pi); if(qEl) qEl.textContent=q;
+    const lEl=document.getElementById("pl"+pi);
+    if(lEl){ lEl.textContent=q===0?"—":money(line); lEl.className="promo-line-total "+(q===0?"promo-line-zero":""); }
+  }
+
+  function promoChg(key, delta){
+    let q=Math.max(0,(qtyMap[key]||0)+delta); qtyMap[key]=q;
+    // sync product-screen
+    const idx=currentProducts.findIndex(p=>keyOf(p)===key);
+    if(idx>=0){
+      const qi=document.getElementById("qi"+idx); if(qi) qi.value=q;
+      const nw=document.getElementById("nw"+idx); if(nw) nw.className="note-wrap "+(q>0?"visible":"");
+    }
+    syncPromoCard(key);
+    calcTotal(); updateCartBadge();
+  }
+
+  // ══════════════════════════════════════
+  //  CATEGORY SCREEN
+  // ══════════════════════════════════════
+  function renderCategoryCards(){
+    const grid=document.getElementById("cat-grid");
+    const cats=allCategories.filter(c=>c!==PROMO_CATEGORY);
+    if(!cats.length){ grid.innerHTML=`<p style="color:var(--muted);font-size:var(--fs-sm);">ไม่พบหมวดหมู่</p>`; return; }
+    grid.innerHTML=cats.map(cat=>{
+      const count=allProducts.filter(p=>p.category===cat).length;
+      return `
+        <div class="cat-card" onclick="showCategory('${escJs(cat)}')">
+          <div class="cat-icon">🏷️</div>
+          <div>${esc(cat)}</div>
+          <div style="font-size:.8rem;color:#9ca3af;font-weight:400;margin-top:4px;">${count} รายการ</div>
+        </div>`;
+    }).join("");
+  }
+
+  function showCategories(){
+    document.getElementById("product-screen").style.display="none";
+    document.getElementById("category-screen").style.display="block";
+    calcTotal();
+  }
+
+  // ══════════════════════════════════════
+  //  PRODUCT SCREEN
+  // ══════════════════════════════════════
+  function showCategory(cat){
+    currentProducts=allProducts.filter(p=>p.category===cat);
+    document.getElementById("cat-title").textContent="🏷️ "+cat;
+    renderProducts();
+    document.getElementById("category-screen").style.display="none";
+    document.getElementById("product-screen").style.display="block";
+  }
+
+  function renderProducts(){
+    const body=document.getElementById("productBody");
+    if(!currentProducts.length){
+      body.innerHTML=`<div style="padding:26px;text-align:center;font-size:var(--fs-sm);color:var(--muted)">🥛 ยังไม่มีสินค้าในหมวดนี้</div>`;
+      calcTotal(); return;
+    }
+    body.innerHTML=currentProducts.map((p,i)=>{
+      const k=keyOf(p); const qty=qtyMap[k]||0; const note=noteMap[k]||"";
+      const line=(Number(p.price)||0)*qty;
+      const imgH=p.image
+        ?`<img class="pimg" src="${esc(p.image)}" loading="lazy" onerror="this.outerHTML='<div class=pimg-placeholder>&#x1F95B;</div>'">`
+        :`<div class="pimg-placeholder">🥛</div>`;
+      return `
+      <div class="product-row">
+        <div class="product-top">
+          ${imgH}
+          <div class="pinfo">
+            <div class="pname">${esc(p.name)}</div>
+            ${p.sku?`<div class="psku">#${esc(p.sku)}</div>`:""}
+            <div class="pprice">${money(p.price)}</div>
+          </div>
+        </div>
+        <div class="product-bottom">
+          <div class="qty-wrap">
+            <button class="qty-btn" onclick="chg('${escJs(k)}',-1,${i})">−</button>
+            <div class="qty-display"><input type="number" min="0" step="1" value="${qty}" id="qi${i}" onchange="inp('${escJs(k)}',this.value,${i})"/></div>
+            <button class="qty-btn" onclick="chg('${escJs(k)}',1,${i})">+</button>
+          </div>
+          <div class="line-total ${qty===0?"line-zero":""}" id="lt${i}">${qty===0?"—":money(line)}</div>
+        </div>
+        <div class="note-wrap ${qty>0?"visible":""}" id="nw${i}">
+          <input class="note-inp" type="text" maxlength="200" placeholder="📝 หมายเหตุสินค้านี้ (ถ้ามี)"
+            value="${esc(note)}" id="ni${i}" oninput="noteMap['${escJs(k)}']=this.value"/>
+        </div>
+      </div>`;
+    }).join("");
+    calcTotal();
+  }
+
+  function chg(key,delta,i){
+    let q=Math.max(0,(qtyMap[key]||0)+delta); qtyMap[key]=q;
+    const qi=document.getElementById("qi"+i); if(qi) qi.value=q;
+    const nw=document.getElementById("nw"+i); if(nw) nw.className="note-wrap "+(q>0?"visible":"");
+    syncPromoCard(key);
+    calcTotal(); updateCartBadge();
+  }
+  function inp(key,value,i){
+    let q=Math.max(0,parseInt(value,10)||0); qtyMap[key]=q;
+    const nw=document.getElementById("nw"+i); if(nw) nw.className="note-wrap "+(q>0?"visible":"");
+    syncPromoCard(key);
+    calcTotal(); updateCartBadge();
+  }
+
+  function calcTotal(){
+    let total=0,cnt=0;
+    currentProducts.forEach((p,i)=>{
+      const k=keyOf(p); const qty=qtyMap[k]||0; const line=(Number(p.price)||0)*qty;
+      const el=document.getElementById("lt"+i);
+      if(el){ el.textContent=qty===0?"—":money(line); el.className="line-total "+(qty===0?"line-zero":""); }
+    });
+    allProducts.forEach(p=>{ const qty=qtyMap[keyOf(p)]||0; total+=(Number(p.price)||0)*qty; if(qty>0)cnt+=qty; });
+    document.getElementById("grandTotal").textContent=money(total);
+    document.getElementById("totalItems").textContent=cnt+" รายการ";
+    return total;
+  }
+
+  function syncNotes(){
+    currentProducts.forEach((p,i)=>{ const el=document.getElementById("ni"+i); if(el) noteMap[keyOf(p)]=el.value; });
+  }
+
+  function resetQty(){
+    qtyMap={}; noteMap={};
+    renderProducts(); renderPromoSection(); updateCartBadge();
+    showToast("🔄 ล้างจำนวนเรียบร้อย",true);
+  }
+  function resetAll(){
+    qtyMap={}; noteMap={};
+    ["customerName","phone","pickupTime"].forEach(id=>document.getElementById(id).value="");
+    renderProducts(); renderPromoSection(); updateCartBadge();
+    showToast("🗑️ รีเซ็ตทั้งหมดเรียบร้อย",true);
+  }
+
+  function buildItems(){
+    syncNotes();
+    return allProducts.map(p=>{ const k=keyOf(p); return{sku:p.sku,name:p.name,price:p.price,qty:qtyMap[k]||0,note:(noteMap[k]||"").trim()}; }).filter(i=>i.qty>0);
   }
 
   // ── CART MODAL ──
@@ -485,280 +695,85 @@
     document.getElementById("cartModal").classList.add("open");
     renderCartModal();
   }
-
   function renderCartModal(){
-    const items = allProducts.filter(p => (qtyMap[keyOf(p)]||0) > 0);
-    const body  = document.getElementById("cartModalBody");
+    const items=allProducts.filter(p=>(qtyMap[keyOf(p)]||0)>0);
+    const body=document.getElementById("cartModalBody");
     if(!items.length){
-      body.innerHTML = `
-        <div class="cart-empty">
-          <div class="cart-empty-icon">🛒</div>
-          <div>ยังไม่ได้เลือกสินค้า</div>
-        </div>`;
-      document.getElementById("cartModalTotal").textContent = money(0);
-    } else {
-      let total = 0;
-      body.innerHTML = items.map((p,ci) => {
-        const k    = keyOf(p);
-        const qty  = qtyMap[k] || 0;
-        const line = (Number(p.price)||0) * qty;
-        total += line;
-        const note = (noteMap[k]||"").trim();
-        return `
-        <div class="cart-item" id="ci${ci}">
-          <div class="cart-item-icon">🥛</div>
-          <div style="flex:1;min-width:0;">
-            <div class="cart-item-name">${esc(p.name)}</div>
-            ${p.sku ? `<div class="cart-item-sku">#${esc(p.sku)}</div>` : ""}
-            ${note  ? `<div class="cart-item-note">📝 ${esc(note)}</div>` : ""}
-          </div>
-          <div class="cart-item-right">
-            <div class="cart-item-line" id="cl${ci}">${money(line)}</div>
-            <div class="cqty-wrap">
-              <button class="cqty-btn del" onclick="cartChg('${escJs(k)}',-1)">−</button>
-              <span class="cqty-num" id="cq${ci}">${qty}</span>
-              <button class="cqty-btn" onclick="cartChg('${escJs(k)}',1)">+</button>
-            </div>
-          </div>
-        </div>`;
-      }).join("");
-      document.getElementById("cartModalTotal").textContent = money(total);
+      body.innerHTML=`<div class="cart-empty"><div class="cart-empty-icon">🛒</div><div>ยังไม่ได้เลือกสินค้า</div></div>`;
+      document.getElementById("cartModalTotal").textContent=money(0); return;
     }
-  }
-
-  // แก้จำนวนใน modal → sync กลับ qtyMap → re-render modal + badge + total bar
-  function cartChg(key, delta){
-    let q = Math.max(0, (qtyMap[key]||0) + delta);
-    qtyMap[key] = q;
-    // sync กลับ product-screen ด้วย (ถ้ากำลังแสดงอยู่)
-    const idx = currentProducts.findIndex(p => keyOf(p) === key);
-    if(idx >= 0){
-      const qi = document.getElementById("qi"+idx); if(qi) qi.value = q;
-      const nw = document.getElementById("nw"+idx); if(nw) nw.className = "note-wrap "+(q>0?"visible":"");
-    }
-    calcTotal();
-    updateCartBadge();
-    renderCartModal(); // re-render modal (รายการหายถ้าเป็น 0)
-  }
-
-  function closeCartModal(){
-    document.getElementById("cartModal").classList.remove("open");
-  }
-  function closeCartOnOverlay(e){
-    if(e.target === document.getElementById("cartModal")) closeCartModal();
-  }
-
-  function scrollToForm(){
-    document.getElementById("customerName").scrollIntoView({behavior:"smooth"});
-  }
-
-  // ═══════════════════════════════════════════
-  //  CATEGORY SCREEN
-  // ═══════════════════════════════════════════
-  function renderCategoryCards(){
-    const grid = document.getElementById("cat-grid");
-    if (!allCategories.length){
-      grid.innerHTML = `<p style="color:var(--muted);font-size:var(--fs-sm);">ไม่พบหมวดหมู่</p>`;
-      return;
-    }
-    grid.innerHTML = allCategories.map(cat => {
-      const count = allProducts.filter(p => p.category === cat).length;
+    let total=0;
+    body.innerHTML=items.map((p,ci)=>{
+      const k=keyOf(p); const qty=qtyMap[k]||0; const line=(Number(p.price)||0)*qty; total+=line;
+      const note=(noteMap[k]||"").trim();
       return `
-        <div class="cat-card" onclick="showCategory('${escJs(cat)}')">
-          <div class="cat-icon">🏷️</div>
-          <div>${esc(cat)}</div>
-          <div style="font-size:.8rem;color:#9ca3af;font-weight:400;margin-top:4px;">
-            ${count} รายการ
-          </div>
-        </div>`;
-    }).join("");
-  }
-
-  function showCategories(){
-    document.getElementById("product-screen").style.display  = "none";
-    document.getElementById("category-screen").style.display = "block";
-    calcTotal();
-  }
-
-  // ═══════════════════════════════════════════
-  //  PRODUCT SCREEN
-  // ═══════════════════════════════════════════
-  function showCategory(cat){
-    currentProducts = allProducts.filter(p => p.category === cat);
-    document.getElementById("cat-title").textContent = "🏷️ " + cat;
-    renderProducts();
-    document.getElementById("category-screen").style.display = "none";
-    document.getElementById("product-screen").style.display  = "block";
-  }
-
-  function renderProducts(){
-    const body = document.getElementById("productBody");
-    if (!currentProducts.length){
-      body.innerHTML = `<div style="padding:26px;text-align:center;font-size:var(--fs-sm);color:var(--muted)">🥛 ยังไม่มีสินค้าในหมวดนี้</div>`;
-      calcTotal(); return;
-    }
-    body.innerHTML = currentProducts.map((p, i) => {
-      const k    = keyOf(p);
-      const qty  = qtyMap[k]  || 0;
-      const note = noteMap[k] || "";
-      const line = (Number(p.price) || 0) * qty;
-      const imgH = p.image
-        ? `<img class="pimg" src="${esc(p.image)}" loading="lazy"
-               onerror="this.outerHTML='<div class=pimg-placeholder>🥛</div>'">`
-        : `<div class="pimg-placeholder">🥛</div>`;
-      return `
-      <div class="product-row">
-        <div class="product-top">
-          ${imgH}
-          <div class="pinfo">
-            <div class="pname">${esc(p.name)}</div>
-            ${p.sku ? `<div class="psku">#${esc(p.sku)}</div>` : ""}
-            <div class="pprice">${money(p.price)}</div>
-          </div>
+      <div class="cart-item">
+        <div class="cart-item-icon">🥛</div>
+        <div style="flex:1;min-width:0;">
+          <div class="cart-item-name">${esc(p.name)}</div>
+          ${p.sku?`<div class="cart-item-sku">#${esc(p.sku)}</div>`:""}
+          ${note?`<div class="cart-item-note">📝 ${esc(note)}</div>`:""}
         </div>
-        <div class="product-bottom">
-          <div class="qty-wrap">
-            <button class="qty-btn" onclick="chg('${escJs(k)}',-1,${i})">−</button>
-            <div class="qty-display">
-              <input type="number" min="0" step="1" value="${qty}" id="qi${i}"
-                onchange="inp('${escJs(k)}',this.value,${i})"/>
-            </div>
-            <button class="qty-btn" onclick="chg('${escJs(k)}',1,${i})">+</button>
+        <div class="cart-item-right">
+          <div class="cart-item-line">${money(line)}</div>
+          <div class="cqty-wrap">
+            <button class="cqty-btn del" onclick="cartChg('${escJs(k)}',-1)">−</button>
+            <span class="cqty-num">${qty}</span>
+            <button class="cqty-btn" onclick="cartChg('${escJs(k)}',1)">+</button>
           </div>
-          <div class="line-total ${qty===0?"line-zero":""}" id="lt${i}">
-            ${qty===0 ? "—" : money(line)}
-          </div>
-        </div>
-        <div class="note-wrap ${qty>0?"visible":""}" id="nw${i}">
-          <input class="note-inp" type="text" maxlength="200"
-            placeholder="📝 หมายเหตุสินค้านี้ (ถ้ามี)"
-            value="${esc(note)}" id="ni${i}"
-            oninput="noteMap['${escJs(k)}']=this.value"/>
         </div>
       </div>`;
     }).join("");
-    calcTotal();
+    document.getElementById("cartModalTotal").textContent=money(total);
   }
+  function cartChg(key,delta){
+    let q=Math.max(0,(qtyMap[key]||0)+delta); qtyMap[key]=q;
+    const idx=currentProducts.findIndex(p=>keyOf(p)===key);
+    if(idx>=0){ const qi=document.getElementById("qi"+idx); if(qi) qi.value=q; const nw=document.getElementById("nw"+idx); if(nw) nw.className="note-wrap "+(q>0?"visible":""); }
+    syncPromoCard(key);
+    calcTotal(); updateCartBadge(); renderCartModal();
+  }
+  function closeCartModal(){ document.getElementById("cartModal").classList.remove("open"); }
+  function closeCartOnOverlay(e){ if(e.target===document.getElementById("cartModal")) closeCartModal(); }
 
-  function chg(key, delta, i){
-    let q = Math.max(0, (qtyMap[key]||0) + delta);
-    qtyMap[key] = q;
-    const qi = document.getElementById("qi"+i); if(qi) qi.value = q;
-    const nw = document.getElementById("nw"+i); if(nw) nw.className = "note-wrap " + (q>0?"visible":"");
-    calcTotal();
-    updateCartBadge();
-  }
-  function inp(key, value, i){
-    let q = Math.max(0, parseInt(value,10) || 0);
-    qtyMap[key] = q;
-    const nw = document.getElementById("nw"+i); if(nw) nw.className = "note-wrap " + (q>0?"visible":"");
-    calcTotal();
-    updateCartBadge();
-  }
-
-  function calcTotal(){
-    let total = 0, cnt = 0;
-    currentProducts.forEach((p, i) => {
-      const k    = keyOf(p);
-      const qty  = qtyMap[k] || 0;
-      const line = (Number(p.price)||0) * qty;
-      const el   = document.getElementById("lt"+i);
-      if(el){
-        el.textContent = qty===0 ? "—" : money(line);
-        el.className   = "line-total " + (qty===0?"line-zero":"");
-      }
-    });
-    allProducts.forEach(p => {
-      const qty  = qtyMap[keyOf(p)] || 0;
-      const line = (Number(p.price)||0) * qty;
-      total += line;
-      if(qty > 0) cnt += qty;
-    });
-    document.getElementById("grandTotal").textContent  = money(total);
-    document.getElementById("totalItems").textContent  = cnt + " รายการ";
-    return total;
-  }
-
-  function syncNotes(){
-    currentProducts.forEach((p, i) => {
-      const el = document.getElementById("ni"+i);
-      if(el) noteMap[keyOf(p)] = el.value;
-    });
-  }
-
-  function resetQty(){
-    qtyMap = {}; noteMap = {};
-    renderProducts();
-    updateCartBadge();
-    showToast("🔄 ล้างจำนวนเรียบร้อย", true);
-  }
-  function resetAll(){
-    qtyMap = {}; noteMap = {};
-    ["customerName","phone","pickupTime"].forEach(id =>
-      document.getElementById(id).value = "");
-    renderProducts();
-    updateCartBadge();
-    showToast("🗑️ รีเซ็ตทั้งหมดเรียบร้อย", true);
-  }
-
-  function buildItems(){
-    syncNotes();
-    return allProducts.map(p => {
-      const k = keyOf(p);
-      return { sku:p.sku, name:p.name, price:p.price,
-               qty: qtyMap[k]||0, note:(noteMap[k]||"").trim() };
-    }).filter(i => i.qty > 0);
-  }
-
-  // ═══════════════════════════════════════════
-  //  SUBMIT ORDER
-  // ═══════════════════════════════════════════
+  // ══════════════════════════════════════
+  //  SUBMIT
+  // ══════════════════════════════════════
   async function submitOrder(){
-    const name       = document.getElementById("customerName").value.trim();
-    const phone      = document.getElementById("phone").value.trim();
-    const pickupTime = document.getElementById("pickupTime").value;
-    const items      = buildItems();
-
-    if(!name)        { showToast("⚠️ กรุณากรอกชื่อลูกค้า", false);            return; }
-    if(!phone)       { showToast("⚠️ กรุณากรอกเบอร์โทร", false);              return; }
-    if(!pickupTime)  { showToast("⚠️ กรุณาเลือกเวลามารับสินค้า", false);     return; }
-    if(!items.length){ showToast("⚠️ กรุณาเลือกสินค้าอย่างน้อย 1 รายการ", false); return; }
-
-    setLoading(true);
-    showToast("⏳ กำลังบันทึกออเดอร์…", true);
-    try {
-      const res = await api("submitOrder", { customerName:name, phone, pickupTime, items });
+    const name=document.getElementById("customerName").value.trim();
+    const phone=document.getElementById("phone").value.trim();
+    const pickupTime=document.getElementById("pickupTime").value;
+    const items=buildItems();
+    if(!name){showToast("⚠️ กรุณากรอกชื่อลูกค้า",false);return;}
+    if(!phone){showToast("⚠️ กรุณากรอกเบอร์โทร",false);return;}
+    if(!pickupTime){showToast("⚠️ กรุณาเลือกเวลามารับสินค้า",false);return;}
+    if(!items.length){showToast("⚠️ กรุณาเลือกสินค้าอย่างน้อย 1 รายการ",false);return;}
+    setLoading(true); showToast("⏳ กำลังบันทึกออเดอร์…",true);
+    try{
+      const res=await api("submitOrder",{customerName:name,phone,pickupTime,items});
       setLoading(false);
-      if(res && res.ok){
-        showToast(`✅ <strong>บันทึกสำเร็จ!</strong><br>เลขออเดอร์: ${res.orderId}<br>ยอดรวม ${money(res.total)}`, true);
-      } else {
-        showToast("❌ บันทึกไม่สำเร็จ: " + (res&&res.error ? res.error : "unknown"), false);
-      }
-    } catch(e){
-      setLoading(false);
-      showToast("❌ Error: " + e.message, false);
-    }
+      if(res&&res.ok) showToast(`✅ <strong>บันทึกสำเร็จ!</strong><br>เลขออเดอร์: ${res.orderId}<br>ยอดรวม ${money(res.total)}`,true);
+      else showToast("❌ บันทึกไม่สำเร็จ: "+(res&&res.error?res.error:"unknown"),false);
+    }catch(e){ setLoading(false); showToast("❌ Error: "+e.message,false); }
   }
 
-  // ═══════════════════════════════════════════
+  // ══════════════════════════════════════
   //  INIT
-  // ═══════════════════════════════════════════
+  // ══════════════════════════════════════
   async function init(){
-    try {
-      const res = await api("getProducts");
-      if(res && res.ok){
-        allProducts   = res.products || [];
-        allCategories = [...new Set(
-          allProducts.map(p => p.category).filter(Boolean)
-        )];
+    try{
+      const res=await api("getProducts");
+      if(res&&res.ok){
+        allProducts  =res.products||[];
+        allCategories=[...new Set(allProducts.map(p=>p.category).filter(Boolean))];
+        promoProducts=allProducts.filter(p=>p.category===PROMO_CATEGORY);
+        renderPromoSection();
         renderCategoryCards();
       } else {
-        document.getElementById("cat-grid").innerHTML =
-          `<p style="color:var(--red);">❌ โหลดสินค้าไม่สำเร็จ: ${res&&res.error?res.error:"unknown"}</p>`;
+        document.getElementById("cat-grid").innerHTML=`<p style="color:var(--red);">❌ โหลดสินค้าไม่สำเร็จ: ${res&&res.error?res.error:"unknown"}</p>`;
       }
-    } catch(e){
-      document.getElementById("cat-grid").innerHTML =
-        `<p style="color:var(--red);">❌ เชื่อมต่อ API ไม่ได้: ${e.message}</p>`;
+    }catch(e){
+      document.getElementById("cat-grid").innerHTML=`<p style="color:var(--red);">❌ เชื่อมต่อ API ไม่ได้: ${e.message}</p>`;
     }
   }
 
