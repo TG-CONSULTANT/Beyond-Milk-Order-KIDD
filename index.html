@@ -437,10 +437,15 @@
         <label>📞 เบอร์โทรศัพท์</label>
         <input class="inp" id="phone" placeholder="0812345678" inputmode="tel" autocomplete="tel" />
       </div>
-      <div class="form-group">
-        <label>🕐 เวลาที่จะมารับ</label>
-        <input class="inp" id="pickupTime" type="datetime-local" />
-      </div>
+      <!-- ใหม่ — แยก 2 ช่อง -->
+<div class="form-group">
+  <label>📅 วันที่จะมารับ</label>
+  <input class="inp" id="pickupDate" type="date" />
+</div>
+<div class="form-group">
+  <label>🕐 เวลาที่จะมารับ</label>
+  <input class="inp" id="pickupTimeOnly" type="time" />
+</div>
       <div class="btn-row">
         <button class="btn btn-ghost" onclick="resetQty()">🔄 ล้างจำนวน</button>
         <button class="btn btn-danger"  onclick="resetAll()">🗑️ รีเซ็ต</button>
@@ -685,7 +690,7 @@
   }
   function resetAll(){
     qtyMap={}; noteMap={};
-    ["customerName","phone","pickupTime"].forEach(id=>document.getElementById(id).value="");
+    ["customerName","phone","pickupDate","pickupTimeOnly"].forEach(id=>document.getElementById(id).value="");
     renderProducts(); renderPromoSection(); updateCartBadge();
     showToast("🗑️ รีเซ็ตทั้งหมดเรียบร้อย",true);
   }
@@ -748,11 +753,18 @@
   async function submitOrder(){
     const name=document.getElementById("customerName").value.trim();
     const phone=document.getElementById("phone").value.trim();
-    const pickupTime=document.getElementById("pickupTime").value;
+    // ใหม่
+const pickupDate     = document.getElementById("pickupDate").value;
+const pickupTimeOnly = document.getElementById("pickupTimeOnly").value;
+const pickupTime     = pickupDate && pickupTimeOnly
+  ? pickupDate + " " + pickupTimeOnly          // → "2025-07-01 14:30"
+  : pickupDate || pickupTimeOnly || "";
     const items=buildItems();
     if(!name){showToast("⚠️ กรุณากรอกชื่อลูกค้า",false);return;}
     if(!phone){showToast("⚠️ กรุณากรอกเบอร์โทร",false);return;}
-    if(!pickupTime){showToast("⚠️ กรุณาเลือกเวลามารับสินค้า",false);return;}
+    // ใหม่
+if(!pickupDate){showToast("⚠️ กรุณาเลือกวันที่มารับสินค้า",false);return;}
+if(!pickupTimeOnly){showToast("⚠️ กรุณาเลือกเวลามารับสินค้า",false);return;}
     if(!items.length){showToast("⚠️ กรุณาเลือกสินค้าอย่างน้อย 1 รายการ",false);return;}
     setLoading(true); showToast("⏳ กำลังบันทึกออเดอร์…",true);
     try{
